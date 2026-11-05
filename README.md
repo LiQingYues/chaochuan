@@ -12,8 +12,7 @@ lx build android           # 安装包：build/android/chaochuan-release.apk
 ```
 
 - `lx.json`：名字、应用 id（`com.chaochuan.chaochuan`）、版本号。改完 `lx sync`。
-- 设计：`docs/design_outline.md`（大纲）、`docs/localsend_features.md`（LocalSend 协议兼容与功能清单）、
-  界面设计稿 https://claude.ai/artifact/LniKZcLhNj3SNLiiVrtwxn。
+- 设计：`docs/design_outline.md`（大纲）、`docs/localsend_features.md`（LocalSend 协议兼容与功能清单）。
 
 ## 桌面 / 移动怎么共用
 
@@ -38,7 +37,7 @@ lx build android           # 安装包：build/android/chaochuan-release.apk
 | `protocol.lua` | LocalSend v2.1 常量（53317、224.0.0.167、`/api/localsend/v2`）、本机身份（别名 / 指纹存 lx.storage）、MIME、安全文件名 |
 | `http.lua` | 建在 lx.TcpServer / TcpSocket 上的 HTTP/1.1：请求 / 响应体流式（Content-Length / chunked），上传等 `drain` 再写下一批 |
 | `service.lua` | 发现（组播 announce + `/register` 回应 + /24 子网扫描）、接收（prepare-upload / upload / cancel，PIN、快速保存、部分接收、纯文本 204）、发送、链接分享（prepare-download / download + 浏览器网页） |
-| `../picker.lua` | 选内容：桌面系统对话框（osascript / PowerShell），手机相册；文本 / 剪贴板 |
+| `../picker.lua` | 选内容：宿主的系统选择器（macOS NSOpenPanel、Windows IFileOpenDialog、iOS 文档选择器、Android SAF，支持文件 / 多选 / 文件夹），旧安装包退回 osascript / PowerShell / 相册；相册、文本、剪贴板 |
 
 - 依赖引擎新能力（2026-11-05 加进 `多平台app引擎`）：TCP 客户端 `drain` 事件、UDP `multicast` 选项（`core/src/lx_net.cpp`），
   `lx.crypto.selfSignedCert`（`core/src/lx_hash.c`，OpenSSL 生成 RSA 2048 自签证书）。旧引擎库自动降级（定时限速发送、不收组播、接收用 http）。
@@ -48,4 +47,6 @@ lx build android           # 安装包：build/android/chaochuan-release.apk
   直接读 Wi‑Fi 网卡地址——手机开着 VPN 时系统 API 只给 tun 地址。
 - 图标：`python3 tools/make_icons.py`（画 `icon/` 源图 → 用 SDK 的 icons.py 生成 iOS / macOS / Android / Windows 各尺寸）。
 - 自测：`tools/selftest.sh`（headless `--net`，真实 socket 回环，默认走 HTTPS，`LS_HTTP=1` 走 http；11 个场景：info / register / 20 MB 多文件 / 拒绝 / 部分接收 / PIN / 文本 / 重名 / 链接分享下载与网页）。`lx test` 只测界面（不收网络事件）。
-- 还没做：手机端文档选择器、iOS 组播权限申请、多个设备依次发送、Windows 实机验证。
+- iOS：`Info.plist` 声明了「本地网络」权限说明（`NSLocalNetworkUsageDescription`）和 Bonjour 服务 `_localsend._tcp`，首次发现设备时系统弹窗申请。
+- 多设备发送：发送页切到「多个设备」，勾选后依次发给每一台（`core/store.lua` 的 `sendQueue`），进度显示「第 n / N 台」。
+- 已在 Windows 实机上验证收发。
