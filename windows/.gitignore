@@ -1,0 +1,7 @@
+# lx 生成（lx run / lx build / lx sync）：SDK 路径、应用 id / 名字
+LX/
+# NuGet 还原的包、C++/WinRT 生成的投影、VS 的本地文件
+packages/
+Generated Files/
+.vs/
+*.user

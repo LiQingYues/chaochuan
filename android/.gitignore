@@ -1,0 +1,8 @@
+# lx 生成（lx run / lx build / lx sync）：SDK 路径、应用 id、版本号
+local.properties
+.gradle/
+.kotlin/
+build/
+app/build/
+*.iml
+.idea/

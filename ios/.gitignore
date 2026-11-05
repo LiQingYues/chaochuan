@@ -1,0 +1,5 @@
+# lx 生成的文件（lx run / lx build / lx sync 时重新生成）：SDK 路径、Bundle ID、版本号、指向 SDK 库的软链接
+LX/
+build/
+xcuserdata/
+*.xcuserstate

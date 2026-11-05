@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  lx 项目的 Windows 工程（lx create 生成）：WinUI 3（Windows App SDK）非打包 + 自包含，链接 SDK 编好的 LXWinKit 与核心库
+  （bin/cache/artifacts/windows：Debug / Release 各一份）。可以直接用 Visual Studio 打开 Runner.sln 编译调试。
+  LX\Generated.props 由 lx 生成（不要提交）：SDK 目录、应用 id / 名字 / Lua 目录（来自 lx.json）。
+  构建前提：NuGet 包已还原到 windows\packages（lx build windows 会自动还原；VS 里「还原 NuGet 包」也行）。
+-->
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- lx 生成：LXSdk / LXArtifacts / LXFrameworkDir / LXAppDir / LXAppId / LXAppName -->
+  <Import Project="$(MSBuildThisFileDirectory)..\LX\Generated.props" Condition="Exists('$(MSBuildThisFileDirectory)..\LX\Generated.props')" />
+  <!-- NuGet 版本跟编译 LXWinKit 时一致（SDK 的库目录里带着） -->
+  <Import Project="$(LXArtifacts)\LXVersions.props" Condition="'$(LXArtifacts)' != '' And Exists('$(LXArtifacts)\LXVersions.props')" />
+  <PropertyGroup>
+    <LXPackagesDir>$(MSBuildThisFileDirectory)..\packages</LXPackagesDir>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <Import Project="$(LXPackagesDir)\Microsoft.Windows.CppWinRT.$(LXCppWinRTVersion)\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('$(LXPackagesDir)\Microsoft.Windows.CppWinRT.$(LXCppWinRTVersion)\build\native\Microsoft.Windows.CppWinRT.props')" />
+  <Import Project="$(LXPackagesDir)\Microsoft.Windows.SDK.BuildTools.$(LXSdkBuildToolsVersion)\build\Microsoft.Windows.SDK.BuildTools.props" Condition="Exists('$(LXPackagesDir)\Microsoft.Windows.SDK.BuildTools.$(LXSdkBuildToolsVersion)\build\Microsoft.Windows.SDK.BuildTools.props')" />
+  <Import Project="$(LXPackagesDir)\Microsoft.WindowsAppSDK.$(LXWindowsAppSDKVersion)\build\native\Microsoft.WindowsAppSDK.props" Condition="Exists('$(LXPackagesDir)\Microsoft.WindowsAppSDK.$(LXWindowsAppSDKVersion)\build\native\Microsoft.WindowsAppSDK.props')" />
+
+  <PropertyGroup Label="Globals">
+    <CppWinRTOptimized>true</CppWinRTOptimized>
+    <ProjectGuid>{691C5CA9-77C8-4496-9E27-1E5288FEFF8C}</ProjectGuid>
+    <ProjectName>Runner</ProjectName>
+    <RootNamespace>Runner</RootNamespace>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>false</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
+    <WindowsTargetPlatformVersion Condition=" '$(WindowsTargetPlatformVersion)' == '' ">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17763.0</WindowsTargetPlatformMinVersion>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <!-- 非打包 + 自包含：不生成 MSIX，Windows App SDK 运行时随 exe 一起输出 -->
+    <AppxPackage>false</AppxPackage>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <DesktopCompatible>true</DesktopCompatible>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+
+  <PropertyGroup>
+    <!-- 输出到项目的 build\windows（与其它平台的 build\<平台> 一致）；exe 用应用的名字 -->
+    <OutDir>$(MSBuildThisFileDirectory)..\..\build\windows\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(MSBuildThisFileDirectory)..\..\build\windows\obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>chaochuan</TargetName>
+    <LXLibDir>$(LXArtifacts)\$(Platform)\$(Configuration)</LXLibDir>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <WarningLevel>Level3</WarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>true</ConformanceMode>
+      <!-- 源码含中文：统一按 UTF-8 编译；C++/WinRT 的大文件需要 /bigobj -->
+      <AdditionalOptions>%(AdditionalOptions) /bigobj /utf-8</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory);$(IntDir);$(LXArtifacts)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;NOMINMAX;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>$(LXLibDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <!-- 「Windows Store」类型工程默认只链接 WindowsApp.lib：桌面 Win32 API 用到的库显式列出 -->
+      <AdditionalDependencies>LXWinKit.lib;lx_core.lib;lx_lua_modules.lib;lx_lua.lib;lx_yoga.lib;hv_static.lib;secur32.lib;winmm.lib;iphlpapi.lib;windowsapp.lib;kernel32.lib;user32.lib;gdi32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;ws2_32.lib;crypt32.lib;windowscodecs.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <Manifest Include="app.manifest" />
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <!-- 只用到 LXAppConfig.h（普通 C++）；注册自己的原生模块时可以改成 Use 并 #include "pch.h" / "LXEngine.h" -->
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ChaochuanHost.cpp">
+      <!-- 只有这一个文件用到 WinUI / LXWinKit：直接包含 SDK 的 pch.h，不单独建预编译头 -->
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChaochuanHost.h" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(LXPackagesDir)\Microsoft.Windows.CppWinRT.$(LXCppWinRTVersion)\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('$(LXPackagesDir)\Microsoft.Windows.CppWinRT.$(LXCppWinRTVersion)\build\native\Microsoft.Windows.CppWinRT.targets')" />
+    <Import Project="$(LXPackagesDir)\Microsoft.Windows.SDK.BuildTools.$(LXSdkBuildToolsVersion)\build\Microsoft.Windows.SDK.BuildTools.targets" Condition="Exists('$(LXPackagesDir)\Microsoft.Windows.SDK.BuildTools.$(LXSdkBuildToolsVersion)\build\Microsoft.Windows.SDK.BuildTools.targets')" />
+    <Import Project="$(LXPackagesDir)\Microsoft.WindowsAppSDK.$(LXWindowsAppSDKVersion)\build\native\Microsoft.WindowsAppSDK.targets" Condition="Exists('$(LXPackagesDir)\Microsoft.WindowsAppSDK.$(LXWindowsAppSDKVersion)\build\native\Microsoft.WindowsAppSDK.targets')" />
+    <Import Project="$(LXPackagesDir)\Microsoft.Web.WebView2.$(LXWebView2Version)\build\native\Microsoft.Web.WebView2.targets" Condition="Exists('$(LXPackagesDir)\Microsoft.Web.WebView2.$(LXWebView2Version)\build\native\Microsoft.Web.WebView2.targets')" />
+  </ImportGroup>
+
+  <!-- NuGet 包没有还原时给出明确的提示 -->
+  <Target Name="LXEnsureNuGetPackages" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(LXArtifacts)' == ''" Text="没有 windows\LX\Generated.props：先在项目目录运行一次 lx build windows（或 lx sync）" />
+    <Error Condition="!Exists('$(LXLibDir)\LXWinKit.lib')" Text="SDK 里没有 Windows 库（$(LXLibDir)）：先运行 lx precache windows" />
+    <Error Condition="!Exists('$(LXPackagesDir)\Microsoft.WindowsAppSDK.$(LXWindowsAppSDKVersion)\build\native\Microsoft.WindowsAppSDK.props')" Text="缺少 NuGet 包 Microsoft.WindowsAppSDK $(LXWindowsAppSDKVersion)：先运行 lx build windows（会自动还原），或在 VS 里右键解决方案 → 还原 NuGet 包，然后重新打开解决方案。" />
+    <Error Condition="!Exists('$(LXPackagesDir)\Microsoft.Windows.CppWinRT.$(LXCppWinRTVersion)\build\native\Microsoft.Windows.CppWinRT.props')" Text="缺少 NuGet 包 Microsoft.Windows.CppWinRT $(LXCppWinRTVersion)：先运行 lx build windows（会自动还原）。" />
+  </Target>
+
+  <!-- 生成 $(IntDir)lx_app_config.h：应用身份 + Debug 直接读源码目录的路径（UTF-8，正斜杠） -->
+  <Target Name="LXGenerateConfig" BeforeTargets="ClCompile">
+    <PropertyGroup>
+      <LXFrameworkDirFwd>$([System.String]::Copy('$(LXFrameworkDir)').Replace('\','/').TrimEnd('/'))</LXFrameworkDirFwd>
+      <LXAppDirFwd>$([System.String]::Copy('$(LXAppDir)').Replace('\','/').TrimEnd('/'))</LXAppDirFwd>
+      <LXConfigText>// 由 Runner.vcxproj 生成，不要手改;#pragma once;#define LX_APP_ID &quot;$(LXAppId)&quot;;#define LX_APP_NAME &quot;$(LXAppName)&quot;;#define LX_DEV_FRAMEWORK_DIR &quot;$(LXFrameworkDirFwd)&quot;;#define LX_DEV_APP_DIR &quot;$(LXAppDirFwd)&quot;</LXConfigText>
+    </PropertyGroup>
+    <MakeDir Directories="$(IntDir)" />
+    <WriteLinesToFile File="$(IntDir)lx_app_config.h" Lines="$(LXConfigText)" Overwrite="true" WriteOnlyWhenDifferent="true" Encoding="utf-8" />
+  </Target>
+
+  <!-- 脚本拷贝到输出目录的 app\（和 iOS/Android 一致，目录名不泄露技术栈）：
+       Release 加固（LXHardenedDir 非空）：只拷单个加密代码包 app.lxb + 资源，没有散的 .lua（先清掉上次可能残留的明文脚本）；
+       Debug / 未加固：拷 Lua 框架 + 应用脚本源码（Release 只读这里，Debug 读源码目录，找不到时也退回这里）。 -->
+  <Target Name="LXCopyLua" AfterTargets="Build">
+    <RemoveDir Directories="$(OutDir)app;$(OutDir)lua" Condition="'$(LXHardenedDir)' != ''" />
+    <ItemGroup Condition="'$(LXHardenedDir)' != ''">
+      <LXHardenedFiles Include="$(LXHardenedDir)\**\*" />
+    </ItemGroup>
+    <Copy Condition="'$(LXHardenedDir)' != ''" SourceFiles="@(LXHardenedFiles)" DestinationFiles="@(LXHardenedFiles->'$(OutDir)app\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <ItemGroup Condition="'$(LXHardenedDir)' == ''">
+      <LXFrameworkFiles Include="$(LXFrameworkDir)\**\*" />
+      <LXAppFiles Include="$(LXAppDir)\**\*" />
+    </ItemGroup>
+    <Copy Condition="'$(LXHardenedDir)' == ''" SourceFiles="@(LXFrameworkFiles)" DestinationFiles="@(LXFrameworkFiles->'$(OutDir)app\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy Condition="'$(LXHardenedDir)' == ''" SourceFiles="@(LXAppFiles)" DestinationFiles="@(LXAppFiles->'$(OutDir)app\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+  <!-- 项目没有 XAML 文件，MSBuild 不生成应用自己的 resources.pri；非打包运行时 WinUI 从 exe 旁的 resources.pri
+       找 ms-appx:///Microsoft.UI.Xaml/Themes/themeresources.xaml（XamlControlsResources 需要），找不到就启动即崩。
+       用控件库自带的 Microsoft.UI.Xaml.Controls.pri 充当 resources.pri。 -->
+  <Target Name="LXCopyResourcesPri" AfterTargets="Build" Condition="!Exists('$(OutDir)$(TargetName).pri')">
+    <Copy SourceFiles="$(OutDir)Microsoft.UI.Xaml.Controls.pri" DestinationFiles="$(OutDir)resources.pri" SkipUnchangedFiles="true" Condition="Exists('$(OutDir)Microsoft.UI.Xaml.Controls.pri')" />
+  </Target>
+</Project>

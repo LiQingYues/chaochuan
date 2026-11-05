@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A0000000000000000000B01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000F02 /* AppDelegate.m */; };
+		1A0000000000000000000B02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000F03 /* main.m */; };
+		1A0000000000000000000B03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000F05 /* Assets.xcassets */; };
+		1A0000000000000000000B04 /* LXMacKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000F08 /* LXMacKit.xcframework */; };
+		1A0000000000000000000B05 /* ChaochuanHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000F13 /* ChaochuanHost.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A0000000000000000000F01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1A0000000000000000000F02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1A0000000000000000000F03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1A0000000000000000000F04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A0000000000000000000F05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A0000000000000000000F06 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		1A0000000000000000000F07 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		1A0000000000000000000F08 /* LXMacKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LXMacKit.xcframework; sourceTree = "<group>"; };
+		1A0000000000000000000F09 /* Generated.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Generated.xcconfig; sourceTree = "<group>"; };
+		1A0000000000000000000F10 /* 超传.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "超传.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0000000000000000000F11 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
+		1A0000000000000000000F12 /* ChaochuanHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChaochuanHost.h; sourceTree = "<group>"; };
+		1A0000000000000000000F13 /* ChaochuanHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChaochuanHost.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A0000000000000000000A02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000000000000000000B04 /* LXMacKit.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A0000000000000000000C01 = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000C02 /* Runner */,
+				1A0000000000000000000C03 /* LX */,
+				1A0000000000000000000C04 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000C02 /* Runner */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000F01 /* AppDelegate.h */,
+				1A0000000000000000000F02 /* AppDelegate.m */,
+				1A0000000000000000000F03 /* main.m */,
+				1A0000000000000000000F12 /* ChaochuanHost.h */,
+				1A0000000000000000000F13 /* ChaochuanHost.m */,
+				1A0000000000000000000F05 /* Assets.xcassets */,
+				1A0000000000000000000F04 /* Info.plist */,
+				1A0000000000000000000F06 /* Debug.xcconfig */,
+				1A0000000000000000000F07 /* Release.xcconfig */,
+				1A0000000000000000000F11 /* Runner.entitlements */,
+			);
+			path = Runner;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000C03 /* LX */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000F08 /* LXMacKit.xcframework */,
+				1A0000000000000000000F09 /* Generated.xcconfig */,
+			);
+			path = LX;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000C04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000F10 /* 超传.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A0000000000000000000D01 /* Runner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A0000000000000000000902 /* Build configuration list for PBXNativeTarget "Runner" */;
+			buildPhases = (
+				1A0000000000000000000A01 /* Sources */,
+				1A0000000000000000000A02 /* Frameworks */,
+				1A0000000000000000000A03 /* Resources */,
+				1A0000000000000000000A04 /* lx：拷贝 Lua 脚本 */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Runner;
+			productName = Runner;
+			productReference = 1A0000000000000000000F10 /* 超传.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A0000000000000000000E01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					1A0000000000000000000D01 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 1A0000000000000000000901 /* Build configuration list for PBXProject "Runner" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = "zh-Hans";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = 1A0000000000000000000C01;
+			productRefGroup = 1A0000000000000000000C04 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A0000000000000000000D01 /* Runner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A0000000000000000000A03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000000000000000000B03 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A0000000000000000000A04 /* lx：拷贝 Lua 脚本 */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "lx：拷贝 Lua 脚本";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Lua 框架（SDK 的 framework/lua）和应用脚本（lua/）合在一起放进 App 包的 app/\nset -e\nif [ -z \"$LX_FRAMEWORK_DIR\" ]; then\n  echo \"error: 没有 LX/Generated.xcconfig：先在项目目录运行一次 lx run / lx build / lx sync\"\n  exit 1\nfi\nDEST=\"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/app\"\nrm -rf \"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/lua\"\nrm -rf \"$DEST\"\nmkdir -p \"$DEST\"\nif [ -n \"$LX_LUA_HARDENED\" ]; then\n  rsync -a --exclude .DS_Store \"$LX_LUA_HARDENED/\" \"$DEST/\"\nelse\n  rsync -a --exclude .DS_Store \"$LX_FRAMEWORK_DIR/\" \"$DEST/\"\n  rsync -a --exclude .DS_Store \"$LX_APP_DIR/\" \"$DEST/\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A0000000000000000000A01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000000000000000000B01 /* AppDelegate.m in Sources */,
+				1A0000000000000000000B02 /* main.m in Sources */,
+				1A0000000000000000000B05 /* ChaochuanHost.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A0000000000000000000801 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1A0000000000000000000802 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A0000000000000000000803 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A0000000000000000000F06 /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$(LX_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = "$(LX_BUILD_NAME)";
+				PRODUCT_NAME = "$(LX_PRODUCT_NAME)";
+			};
+			name = Debug;
+		};
+		1A0000000000000000000804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A0000000000000000000F07 /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$(LX_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = "$(LX_BUILD_NAME)";
+				PRODUCT_NAME = "$(LX_PRODUCT_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A0000000000000000000901 /* Build configuration list for PBXProject "Runner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000000000000000000801 /* Debug */,
+				1A0000000000000000000802 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A0000000000000000000902 /* Build configuration list for PBXNativeTarget "Runner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000000000000000000803 /* Debug */,
+				1A0000000000000000000804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A0000000000000000000E01 /* Project object */;
+}

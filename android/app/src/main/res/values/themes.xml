@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 没有 ActionBar：导航栏由 lxkit 自己画；系统栏透明，内容 edge-to-edge，insets 由 LXNavigator 处理 -->
+    <style name="LXTheme" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:colorAccent">#007AFF</item>
+    </style>
+</resources>

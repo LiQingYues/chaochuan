@@ -1,0 +1,9 @@
+# lx 编译产物
+build/
+.DS_Store
+# lx install 装的包（lx.lock 要提交）
+.lx/
+lua/lx_modules/
+# Lua 语言服务器配置（含 SDK 的绝对路径，lx sync 自动生成）
+.luarc.json
+dist/
