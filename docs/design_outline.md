@@ -3,7 +3,6 @@
 > **已定（2026-11-05）**：App 名「超传」，品牌色红色；**与 LocalSend 协议 v2.1 兼容并覆盖其全部功能**（清单见 `docs/localsend_features.md`）；鸿蒙暂不做。
 > 下文 §4 的自定义协议作废，改为 LocalSend 协议（端口 53317、组播 224.0.0.167、`/api/localsend/v2/*`、HTTPS 自签证书 + 指纹）；
 > 断点续传等超出 LocalSend 的能力只在双方都是超传时启用（`/info` 里带扩展字段协商），对端是 LocalSend 时回落到标准流程。
-> 界面设计稿：https://claude.ai/artifact/LniKZcLhNj3SNLiiVrtwxn（桌面版 + 移动版）。
 
 > 结构：lx 引擎，Lua 写界面和业务，各平台宿主工程只链 lx SDK；重活放 `native/` 下的 C++ / libhv 模块，经 `lx.native` 给 Lua 调。
 > 状态：大纲，待确认后再细化协议和逐模块设计。
