@@ -1,0 +1,2 @@
+// exe 图标：资源里的第一个图标就是资源管理器、任务栏、Alt+Tab 显示的图标（tools/icons.py 生成 Assets/app.ico）
+1 ICON "Assets\\app.ico"

@@ -1,0 +1,5 @@
+// Release：关闭开发模式，只读 App 包里的脚本（不写入电脑上的路径）
+#include "../LX/Generated.xcconfig"
+LX_DEVELOPMENT = NO
+LX_DEV_FRAMEWORK_DIR =
+LX_DEV_APP_DIR =

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自动生成（tools/icons.py），不要手改 -->
+<resources>
+    <!-- 通知强调色（小图标、标题的着色），lxkit 的通知模块按名字读取 -->
+    <color name="lx_notification_color">#D62839</color>
+</resources>

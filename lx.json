@@ -1,0 +1,10 @@
+{
+  "name": "chaochuan",
+  "displayName": "超传",
+  "id": "com.chaochuan.chaochuan",
+  "version": "1.0.0+1",
+  "scheme": "chaochuan",
+  "platforms": ["ios","android","macos","windows"],
+  "sdk": ">=0.1.0",
+  "dependencies": {}
+}

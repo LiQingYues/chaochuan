@@ -1,0 +1,5 @@
+// Debug：开发模式（错误浮层、摇一摇重载、热更新、断点调试），模拟器直接读电脑上的源码目录
+#include "../LX/Generated.xcconfig"
+LX_DEVELOPMENT = YES
+LX_DEV_FRAMEWORK_DIR = $(LX_FRAMEWORK_DIR)
+LX_DEV_APP_DIR = $(LX_APP_DIR)

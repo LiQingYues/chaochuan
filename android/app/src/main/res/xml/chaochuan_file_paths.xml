@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- chaochuanHost.openPath 用：把本机文件交给其它 App 预览 / 分享（ChaochuanFileProvider）。
+     接收目录默认在 files/Documents/超传，用户也可能改到外部存储，所以外部目录一并覆盖 -->
+<paths>
+    <files-path name="files" path="." />
+    <cache-path name="cache" path="." />
+    <external-files-path name="external_files" path="." />
+    <external-cache-path name="external_cache" path="." />
+    <external-path name="external" path="." />
+</paths>
